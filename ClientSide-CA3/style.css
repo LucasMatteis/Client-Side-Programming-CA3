@@ -97,14 +97,17 @@ header, section, footer, aside, nav, article, figure, figcaption {
 				padding: 0px;}
 			h1 {
 				margin: 0px 0px 10px 0px;
-				color: #f89b0f;}
+				color: #000000;}
 			aside h2 {
 				padding: 30px 0px 10px 0px;
-				color: #f89b0f;}
+				color: #e9553b;
+				text-align: right;
+			}
 			footer {
 				text-align: right;
 				font-size: 85%;
 				padding: 7px 20px 0px 20px;
+				height: auto;
 			}
 			
 				.footer-2 {
@@ -182,8 +185,19 @@ header, section, footer, aside, nav, article, figure, figcaption {
 					height: 300px;
 					padding-bottom: 150px;
 					color: #e9553b;
-
 				  }
+				  .gmap_canvas {
+					overflow: hidden;
+					background: none !important;
+					height: 500px;
+					width: 690px;
+				}
+				.mapouter {
+					position: relative;
+					text-align: right;
+					height: 500px;
+					width: 690px;
+				}
 				  input:focus,
 				  button:focus,
 				  .form-control:focus{
