@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Asian Cuisine</title>
+   <!--page icon-->
+   <link rel="icon" href="images/logo.png">
+   <!--css-->
+   <link rel="stylesheet" href="style.css">
+   <!--bootstrap-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+
+
+
+</head>
+
+<body>
+   <div class="wrapper">
+      <!--Header-->
+      <header class="header-bg">
+         <h1>Sushi Palace</h1>
+         <nav>
+            <ul>
+               <li><a href="index.html">home</a></li>
+               <li><a href="#" class="current">menu</a></li>
+               <li><a href="staff.html">staff</a></li>
+               <li><a href="info.html">info</a></li>
+            </ul>
+         </nav>
+      </header>
+
+      <!--Menu options-->
+      <div class="container-fluid mt-5">
+         <h2 class="mb-5 text-center">Menu</h2>
+         <div class="row justify-content-center">
+            <div class="col-md-8">
+               <div class="table-responsive">
+                  <table id="myTable" class="table">
+                     <thead>
+                        <tr>
+                           <th>Product</th>
+                           <th>Name</th>
+                           <th>Qty</th>
+                           <th>Price</th>
+                           <th class="text-align">
+                              <span id="amount" class="amount">Amount</span>
+                           </th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/starter-1.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Chicken wings</p>
+                              <br>
+                              <p><strong>(starter)
+                              </p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="7.50" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/starter-2.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Spring Rolls</p>
+                              <br>
+                              <p><strong>(starter)</strong></p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="7.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/starter-3.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Pad Prik Haeng</p>
+                              <br>
+                              <p><strong>(starter)</strong></p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="8.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/starter-v.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Pad Prik Haeng (tofu)</p>
+                              <br>
+                              <p><strong>(starter)</strong> </p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="7.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/main-1.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Ramen</p>
+                              <br>
+                              <p><strong>(main)
+                              </p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="12.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/sushi-main.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Sushi</p>
+                              <br>
+                              <p><strong>(main)</strong></p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="10.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/main-3.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Bibimbap</p>
+                              <br>
+                              <p><strong>(main)</strong></p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="12.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/main-v.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Ramen</p>
+                              <br>
+                              <p><strong>(main)</strong> </p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="10.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/dessert-1.png">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Fried Rice Dumplings</p>
+                              <br>
+                              <p><strong>(dessert)</p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="6.50" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/dessert-2.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Banana Fritters</p>
+                              <br>
+                              <p><strong>(dessert)</strong></p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="7.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/dessert-3.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Chinese Puff Pastry Egg Tart</p>
+                              <br>
+                              <p><strong>(dessert)</strong></p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="6.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/dessert-v.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Chinese Mango Pudding</p>
+                              <br>
+                              <p><strong>(dessert)</strong> </p>
+                              <img id="vegetarian"
+                                 src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSIwMTAtLS1WZWdhbi1TeW1ib2wiIGZpbGw9Im5vbmUiPjxjaXJjbGUgaWQ9Ik92YWwiIGN4PSIyOSIgY3k9IjI5IiBmaWxsPSIjMjRhZTVmIiByPSIyOSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTI5IDB2NThjLTE2LjAxNjI1NzYtLjAwMDAwMDItMjguOTk5OTk5NTctMTIuOTgzNzQyNC0yOC45OTk5OTk1Ny0yOXMxMi45ODM3NDE5Ny0yOC45OTk5OTk3NiAyOC45OTk5OTk1Ny0yOXoiIGZpbGw9IiM0ZmJhNmYiLz48ZyBmaWxsPSIjZmZmIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yOC4zMyAzMmMtMy4xMDI4NjUyLTcuMjk4MjcyOS04LjM5Njk1Ny0xMy40NTE5OTk0LTE1LjE1LTE3LjYxLS44Mzk4NTUyLS41NDU3ODgzLTEuOTQ5NDI0Ni0uNDE1NDk4LTIuNjQuMzEtLjM4MjcwMTguNDM4NjY5My0uNTU1MjgxMDIgMS4wMjIzMTM2LS40NzI2ODQ1IDEuNTk4NTY4MS4wODI1OTY0LjU3NjI1NDUuNDEyMTcwNSAxLjA4NzkyMzUuOTAyNjg0NSAxLjQwMTQzMTkgMTAuMiA2LjQ0IDE2IDE2LjU4IDE2IDI3LjgzdjMuMzdjLS4wMjk3MTYzIDEuMDMwNjg1OS43MDM2NTg1IDEuOTI2MDg1MyAxLjcyIDIuMS41ODE3MDgxLjA5MTMxMTkgMS4xNzQwOTU3LS4wNzgzNTY3IDEuNjE5MjU5Ny0uNDYzNzgwMXMuNjk3ODYzNC0uOTQ3NDMxOC42OTA3NDAzLTEuNTM2MjE5OXYtMy40NWMwLTYuNjIgMi41NC0xMy4xNyA3LjU2LTE5LjQ4LjM2ODY5MTYtLjQ1OTc5OTMuNTE1ODEyNy0xLjA1ODgwNzIuNDAyMDgzMi0xLjYzNzA5M3MtLjQ3NjczMDEtMS4wNzY5Njk4LS45OTIwODMyLTEuMzYyOTA3Yy0uODkyNDY5OC0uNDY0MDg2Mi0xLjk4OTM4MjYtLjIxOTM5MDMtMi42LjU4LTIuMDU2MTIxMyAyLjU3Mjc2MjQtMy44MDc3NjEgNS4zNzQ3MTQ4LTUuMjIgOC4zNS0uMTYyNDUzMS4zNTY1NTktLjUxODE3NjkuNTg1MzkxOC0uOTEuNTg1MzkxOHMtLjc0NzU0NjktLjIyODgzMjgtLjkxLS41ODUzOTE4Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtMzMuNjEgMjYuMDZjLTIuMTYtMi4zNS0yLjEzLTYuMy4xNi05LjExIDIuNDEtMi45NSAxMS4xNC0zLjk1IDExLjE0LTMuOTVzMi44NCA2LjY5LS42IDEwLjkxYzAgMC0yLjU2IDMuNDQtOC45MyAzLjA2eiIvPjwvZz48L2c+PC9zdmc+" /></strong>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="5.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/beer.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Asahi beer</p>
+                              <br>
+                              <p><strong>(drink)
+                              </p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="4.50" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/sake.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Rihaku sake</p>
+                              <br>
+                              <p><strong>(drink)</strong></p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="25.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div class="product-img">
+                                 <div class="img-prdct">
+                                    <img src="images/bubble-tea.jpg">
+                                 </div>
+                              </div>
+                           </td>
+                           <td>
+                              <p>Bubble Tea</p>
+                              <br>
+                              <p><strong>(drink)</strong></p>
+                           </td>
+                           <td>
+                              <div class="button-container">
+                                 <button class="cart-qty-plus" type="button" value="+">+</button>
+                                 <input type="text" name="qty" min="0" class="qty form-control" value="0" />
+                                 <button class="cart-qty-minus" type="button" value="-">-</button>
+                              </div>
+                           </td>
+                           <td>
+                              <input type="text" value="4.00" class="price form-control" disabled>
+                           </td>
+                           <td align="right">€ <span id="amount" class="amount">0</span>
+                           </td>
+                        </tr>
+
+
+                        <!--Total amount display-->
+                     </tbody>
+                     <tfoot>
+                        <tr>
+                           <td colspan="4"></td>
+                           <td align="right">
+                              <strong>TOTAL = $ <span id="total" class="total">0</span>
+                              </strong>
+                           </td>
+                        </tr>
+                     </tfoot>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!--Footer-->
+      </section>
+      </aside>
+      <footer>
+         Lucas Matteis - 2020495
+      </footer>
+   </div>
+
+   <!-- js-->
+   <script src="js/menu.js"></script>
+</body>
+
+</html>
